@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1500); // Artificial delay to show the nice loader
 
     // --- 3. Typing Effect ---
-    const words = ["Python Developer", "Data Alchemist", "Backend Engineer", "UI Specialist"];
+    const words = ["Python Developer", "Web Developer", "Backend Engineer", "Asp.net Developer"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -137,7 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             // Dynamic color logic based on theme could be added, using neon blue base
-            ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+            const isLight = document.body.classList.contains('light-theme');
+            ctx.fillStyle = isLight ? 'rgba(2, 132, 199, 0.4)' : 'rgba(0, 240, 255, 0.4)';
             ctx.fill();
         }
     }
@@ -161,7 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (distance < 120) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(176, 38, 255, ${0.2 - distance / 600})`;
+                    const isLight = document.body.classList.contains('light-theme');
+                    const alpha = Math.max(0, 0.2 - distance / 600);
+                    ctx.strokeStyle = isLight ? `rgba(126, 34, 206, ${alpha})` : `rgba(176, 38, 255, ${alpha})`;
                     ctx.lineWidth = 1;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);

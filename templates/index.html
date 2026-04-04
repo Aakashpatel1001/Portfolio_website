@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
-            <a href="#" class="logo">Aakash<span>.</span></a>
+            <a href="{% url 'home' %}" class="logo">Aakash<span>.</span></a>
             <ul class="nav-links">
                 <li><a href="#about" class="nav-btn">Story</a></li>
                 <li><a href="#skills" class="nav-btn">Skills</a></li>
@@ -110,40 +110,65 @@
         </section>
 
         <!-- About Section -->
+        <!-- About Section -->
         <section id="about" class="about section-padding reveal-on-scroll">
             <h2 class="section-title" data-text="01. About Entity">01. <span>About Entity</span></h2>
             <div class="about-container">
-                <div class="glass-card about-card">
+                <div class="glass-card about-card tech-panel">
                     <div class="about-content-wrapper">
-                        <div class="about-image-wrapper">
-                            <div class="glow-border">
+
+                        <!-- Left: Visual ID Badge -->
+                        <div class="about-visual-badge">
+                            <div class="badge-header">
+                                <span><i data-feather="cpu"></i> SYS_ADMIN</span>
+                                <span class="badge-status">ACTIVE</span>
+                            </div>
+                            <div class="badge-image-container glow-border">
                                 <img src="{% static 'images/profile.jpeg' %}" alt="Aakash Profile"
                                     onerror="this.src='/static/images/fallback-profile.png';">
+                                <div class="scanner-line"></div>
+                            </div>
+                            <div class="badge-footer">
+                                <div class="id-code">ID: // AA-DEV-001</div>
+                                <div class="id-role">SOFTWARE DEVELOPER</div>
                             </div>
                         </div>
-                        <div class="about-story">
-                            <h3>The Origin Story</h3>
-                            <p>My journey into the digital realm wasn't a straight line. It started with a persistent
-                                curiosity about the architecture behind data flows and beautiful aesthetics. I found
-                                myself dismantling systems, reading logs, and writing scripts to automate chaos.</p>
-                            <p>Today, I thrive at the intersection where complex logic meets minimalist user interfaces.
-                                Whether orchestrating scalable backend services in Django or composing pixel-perfect Web
-                                Components, my goal remains the same: creating efficient magic.</p>
-                            <div class="stats-row">
-                                <div class="stat-item">
-                                    <span class="stat-num neon-text">3+</span>
-                                    <span class="stat-label">Years of Code</span>
+
+                        <!-- Right: Story & Details -->
+                        <div class="about-tech-story">
+                            <h3 class="cyber-heading">System Operator Profile</h3>
+
+                            <p class="tech-lead"><i data-feather="chevron-right"></i> Current Status: BCA Undergrad &
+                                Web Engineer</p>
+
+                            <p class="story-text">
+                                Hello! I'm Aakash Savaliya, an ambitious developer driven by the mechanics of modern
+                                technology. My prime objective is bridging the gap between rigorous backend databases
+                                and fluid frontend interfaces that directly impact end-users.
+                            </p>
+                            <p class="story-text">
+                                With a tech-stack heavily centered around Python, Django, and ASP.NET infrastructures, I
+                                construct clean, responsive architectures. Whether I'm building secure logical REST
+                                operations, managing complex relational SQL flows, or rendering Javascript-rich DOMs, I
+                                thrive on turning heavy system requirements into elegant web solutions.
+                            </p>
+
+                            <div class="tech-stats-grid">
+                                <div class="tech-stat-box box-blue">
+                                    <span class="stat-number">BCA</span>
+                                    <span class="stat-meta">Degree In Progress</span>
                                 </div>
-                                <div class="stat-item">
-                                    <span class="stat-num neon-text">20+</span>
-                                    <span class="stat-label">Projects Deployed</span>
+                                <div class="tech-stat-box box-purple">
+                                    <span class="stat-number">10+</span>
+                                    <span class="stat-meta">Projects Executed</span>
                                 </div>
-                                <div class="stat-item">
-                                    <span class="stat-num neon-text">1m+</span>
-                                    <span class="stat-label">Lines Written</span>
+                                <div class="tech-stat-box box-orange">
+                                    <span class="stat-number">2+</span>
+                                    <span class="stat-meta">Years Learning</span>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -152,33 +177,72 @@
         <!-- Skills Section -->
         <section id="skills" class="skills section-padding reveal-on-scroll">
             <h2 class="section-title" data-text="02. Core Capabilities">02. <span>Core Capabilities</span></h2>
-            <div class="skills-grid">
-                <div class="glass-card skill-card" data-proficiency="Advanced">
-                    <div class="skill-icon"><i data-feather="terminal"></i></div>
-                    <h3>Python</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%;"></div>
+
+            <div class="skills-split-container">
+                <!-- Left: Categories -->
+                <div class="skills-categories-grid">
+                    <div class="glass-card compact-skill-card">
+                        <i data-feather="server" class="compact-icon"></i>
+                        <h4>Backend Architecture</h4>
+                        <p>Python / ASP.NET / Django /JAVA</p>
+                    </div>
+                    <div class="glass-card compact-skill-card">
+                        <i data-feather="layout" class="compact-icon"></i>
+                        <h4>Web Frontend</h4>
+                        <p>HTML / CSS / JS</p>
+                    </div>
+                    <div class="glass-card compact-skill-card">
+                        <i data-feather="database" class="compact-icon"></i>
+                        <h4>Database Systems</h4>
+                        <p>SQL / SQLITE / MYSQL</p>
+                    </div>
+                    <div class="glass-card compact-skill-card">
+                        <i data-feather="cpu" class="compact-icon"></i>
+                        <h4>Data & AI Logic</h4>
+                        <p>Pandas / Numpy / Git</p>
                     </div>
                 </div>
-                <div class="glass-card skill-card" data-proficiency="Advanced">
-                    <div class="skill-icon"><i data-feather="database"></i></div>
-                    <h3>Django & SQL</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%;"></div>
+
+                <!-- Right: Progress Stack -->
+                <div class="skills-progress-stack glass-card">
+                    <div class="stack-header">
+                        <i data-feather="terminal"></i> <span>DEV_TERMINAL.exe</span>
                     </div>
-                </div>
-                <div class="glass-card skill-card" data-proficiency="Intermediate">
-                    <div class="skill-icon"><i data-feather="code"></i></div>
-                    <h3>Frontend Stack</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%;"></div>
+
+                    <div class="stack-item">
+                        <div class="stack-meta"><span>PYTHON & DJANGO</span><span class="stack-pct">70%</span></div>
+                        <div class="stack-bar">
+                            <div class="stack-fill" style="width: 70%;"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="glass-card skill-card" data-proficiency="Intermediate">
-                    <div class="skill-icon"><i data-feather="bar-chart-2"></i></div>
-                    <h3>Data Science</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 80%;"></div>
+
+                    <div class="stack-item">
+                        <div class="stack-meta"><span>ASP.NET / C#</span><span class="stack-pct">65%</span></div>
+                        <div class="stack-bar">
+                            <div class="stack-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="stack-item">
+                        <div class="stack-meta"><span>FRONTEND (HTML/JS/CSS)</span><span class="stack-pct">80%</span>
+                        </div>
+                        <div class="stack-bar">
+                            <div class="stack-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="stack-item">
+                        <div class="stack-meta"><span>SQL & DATABASES</span><span class="stack-pct">80%</span></div>
+                        <div class="stack-bar">
+                            <div class="stack-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="stack-item">
+                        <div class="stack-meta"><span>JAVA</span><span class="stack-pct">65%</span></div>
+                        <div class="stack-bar">
+                            <div class="stack-fill" style="width: 65%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
