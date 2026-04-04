@@ -1,0 +1,374 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakash Savaliya | Portfolio</title>
+    <meta name="description" content="Futuristic Portfolio of Aakash Savaliya - Developer & Data Enthusiast">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="dark-theme">
+    <!-- Loading Animation -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader">
+            <div class="neon-circle"></div>
+            <div class="neon-circle inner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Aakash<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-btn">Story</a></li>
+                <li><a href="#skills" class="nav-btn">Skills</a></li>
+                <li><a href="#projects" class="nav-btn">Projects</a></li>
+                <li><a href="#contact" class="nav-btn">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+
+                <div class="nav-socials">
+                    <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i
+                            data-feather="linkedin"></i></a>
+                    <a href="https://github.com/" target="_blank" aria-label="GitHub"><i data-feather="github"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                            data-feather="instagram"></i></a>
+                </div>
+                <button id="theme-toggle" aria-label="Toggle Theme">
+                    <i data-feather="moon" class="moon-icon"></i>
+                    <i data-feather="sun" class="sun-icon"></i>
+                </button>
+                <div class="hamburger">
+                    <i data-feather="menu"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <canvas id="particles-canvas"></canvas>
+            <div class="hero-content">
+                <div class="hero-text-container">
+                    <div class="system-badge">
+                        <span class="dot"></span> SYSTEM_ONLINE
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="first-name">AAKASH</span><br>
+                        <span class="last-name">SAVALIYA.</span>
+                    </h1>
+                    <h2 class="hero-subtitle terminal-prompt">
+                        > <span id="typing-text" class="neon-text-custom"></span><span class="cursor-blink">_</span>
+                    </h2>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn-solid">INITIALIZE_PROJECTS</a>
+                        <a href="#contact" class="btn-outline">EXECUTE_CONTACT()</a>
+                    </div>
+                </div>
+
+                <div class="hero-terminal-container">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <span class="traffic-dot red"></span>
+                            <span class="traffic-dot yellow"></span>
+                            <span class="traffic-dot green"></span>
+                        </div>
+                        <div class="terminal-body" id="hero-terminal-body">
+                            <p><span class="log-gray">$ Fetching data from API...</span></p>
+                            <p><span class="log-gray">$ Parsing system parameters...</span></p>
+                            <p><span class="log-yellow">$ python manage.py runserver</span></p>
+                            <p><span class="log-green">$ System online at port 8000</span></p>
+                            <p><span class="log-green">$ WebSockets connected via Redis</span></p>
+                            <p><span class="log-red">$ Error: 404 not found (handled)</span></p>
+                            <p><span class="log-yellow">$ Deploying to production...</span></p>
+                            <p><span class="log-prompt">➜</span> <span class="log-path">~</span> <span
+                                    class="cursor-block"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding reveal-on-scroll">
+            <h2 class="section-title" data-text="01. About Entity">01. <span>About Entity</span></h2>
+            <div class="about-container">
+                <div class="glass-card about-card">
+                    <div class="about-content-wrapper">
+                        <div class="about-image-wrapper">
+                            <div class="glow-border">
+                                <img src="{% static 'images/profile.jpeg' %}" alt="Aakash Profile"
+                                    onerror="this.src='/static/images/fallback-profile.png';">
+                            </div>
+                        </div>
+                        <div class="about-story">
+                            <h3>The Origin Story</h3>
+                            <p>My journey into the digital realm wasn't a straight line. It started with a persistent
+                                curiosity about the architecture behind data flows and beautiful aesthetics. I found
+                                myself dismantling systems, reading logs, and writing scripts to automate chaos.</p>
+                            <p>Today, I thrive at the intersection where complex logic meets minimalist user interfaces.
+                                Whether orchestrating scalable backend services in Django or composing pixel-perfect Web
+                                Components, my goal remains the same: creating efficient magic.</p>
+                            <div class="stats-row">
+                                <div class="stat-item">
+                                    <span class="stat-num neon-text">3+</span>
+                                    <span class="stat-label">Years of Code</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-num neon-text">20+</span>
+                                    <span class="stat-label">Projects Deployed</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-num neon-text">1m+</span>
+                                    <span class="stat-label">Lines Written</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills section-padding reveal-on-scroll">
+            <h2 class="section-title" data-text="02. Core Capabilities">02. <span>Core Capabilities</span></h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-card" data-proficiency="Advanced">
+                    <div class="skill-icon"><i data-feather="terminal"></i></div>
+                    <h3>Python</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="glass-card skill-card" data-proficiency="Advanced">
+                    <div class="skill-icon"><i data-feather="database"></i></div>
+                    <h3>Django & SQL</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="glass-card skill-card" data-proficiency="Intermediate">
+                    <div class="skill-icon"><i data-feather="code"></i></div>
+                    <h3>Frontend Stack</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="glass-card skill-card" data-proficiency="Intermediate">
+                    <div class="skill-icon"><i data-feather="bar-chart-2"></i></div>
+                    <h3>Data Science</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline / Journey Section -->
+        <section id="journey" class="journey section-padding reveal-on-scroll">
+            <h2 class="section-title" data-text="03. The Journey">03. <span>The Journey</span></h2>
+            <div class="timeline">
+                <!-- Item 1 (Left) -->
+                <div class="timeline-item left reveal-on-scroll">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-meta">
+                            <span class="meta-icon"><i data-feather="terminal"></i></span>
+                            <span class="timeline-date">2018</span>
+                        </div>
+                        <h3>The Spark</h3>
+                        <p>Wrote my first lines of code. A simple 'Hello World' that opened up an infinite universe of
+                            possibilities, leading me to pursue a rigorous foundation in Computer Science.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 (Right) -->
+                <div class="timeline-item right reveal-on-scroll">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-meta">
+                            <span class="meta-icon"><i data-feather="smartphone"></i></span>
+                            <span class="timeline-date">2020</span>
+                        </div>
+                        <h3>Learning Phase</h3>
+                        <p>Dove deep into mobile and frontend development. Built first iterations of interactive apps,
+                            realizing I could bring complex UI ideas to life with just a keyboard and determination.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 (Left) -->
+                <div class="timeline-item left reveal-on-scroll">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-meta">
+                            <span class="meta-icon"><i data-feather="globe"></i></span>
+                            <span class="timeline-date">2021</span>
+                        </div>
+                        <h3>Web Evolution</h3>
+                        <p>Expanded into the web ecosystem. Mastered modern frontend frameworks, learning to craft
+                            dynamic experiences that work seamlessly and beautifully across all digital platforms.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 (Right) -->
+                <div class="timeline-item right reveal-on-scroll">
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-meta">
+                            <span class="meta-icon"><i data-feather="database"></i></span>
+                            <span class="timeline-date">2022 - Present</span>
+                        </div>
+                        <h3>Full Stack Journey</h3>
+                        <p>Integrated scalable backend technologies, databases, and cloud services. Evolved into a
+                            complete developer capable of architecting and deploying end-to-end production solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-padding reveal-on-scroll">
+            <h2 class="section-title" data-text="04. Prototypes & Deployments">04. <span>Prototypes & Deployments</span>
+            </h2>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Arch</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card-container web reveal-on-scroll">
+                    <div class="glass-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="{% static 'images/project1.png' %}" alt="Project 1">
+                            <div class="project-overlay">
+                                <a href="#" class="btn-glass"><i data-feather="external-link"></i> Live Demo</a>
+                                <a href="#" class="btn-glass"><i data-feather="github"></i> Source</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Nexus Commerce Platform</h3>
+                            <p>A full-stack asynchronous shopping aesthetic platform built on Django Channels and
+                                WebSockets.</p>
+                            <div class="tech-stack">
+                                <span>Django</span>
+                                <span>PostgreSQL</span>
+                                <span>Redis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card-container data reveal-on-scroll">
+                    <div class="glass-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="{% static 'images/project2.png' %}" alt="Project 2">
+                            <div class="project-overlay">
+                                <a href="#" class="btn-glass"><i data-feather="external-link"></i> Live Demo</a>
+                                <a href="#" class="btn-glass"><i data-feather="github"></i> Source</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Quantum Analytics Dashboard</h3>
+                            <p>Real-time data visualization interface rendering massive telemetry logs with predictive
+                                neon charting.</p>
+                            <div class="tech-stack">
+                                <span>React</span>
+                                <span>Python</span>
+                                <span>Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra Project -->
+                <div class="project-card-container web reveal-on-scroll">
+                    <div class="glass-card project-card">
+                        <div class="project-img-wrapper">
+                            <div class="placeholder-gradient"></div>
+                            <div class="project-overlay">
+                                <a href="#" class="btn-glass"><i data-feather="github"></i> Source</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Synergy AI API</h3>
+                            <p>RESTful interface wrapping over local language models for efficient response generation
+                                pipelines.</p>
+                            <div class="tech-stack">
+                                <span>FastAPI</span>
+                                <span>Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-padding reveal-on-scroll">
+            <h2 class="section-title" data-text="05. Initiate Contact">05. <span>Initiate Contact</span></h2>
+            <div class="contact-container glass-card">
+                <div class="contact-text">
+                    <h3>Let's Build The Future</h3>
+                    <p>My inbox is always open. Whether you have a visionary project in mind or just want to discuss
+                        data algorithms and aesthetics, I will respond.</p>
+                    <div class="social-neon">
+                        <a href="#"><i data-feather="github"></i></a>
+                        <a href="#"><i data-feather="linkedin"></i></a>
+                        <a href="#"><i data-feather="twitter"></i></a>
+                        <a href="#"><i data-feather="mail"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" onsubmit="event.preventDefault();">
+                        <div class="input-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">Identification (Name)</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Uplink (Email)</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" rows="4" required placeholder=" "></textarea>
+                            <label for="message">Transmission Data</label>
+                        </div>
+                        <button type="submit" class="btn-neon w-100">Send Transmission <i
+                                data-feather="send"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Architected & Powered by <span class="neon-text">Aakash Savaliya</span> &copy; 2026</p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        feather.replace()
+    </script>
+</body>
+
+</html>
