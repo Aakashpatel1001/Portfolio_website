@@ -15,16 +15,19 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=5.0">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body class="dark-theme">
     <!-- Loading Animation -->
     <div id="loader" class="loader-wrapper">
-        <div class="loader">
-            <div class="neon-circle"></div>
-            <div class="neon-circle inner"></div>
+        <div class="cyber-loader">
+            <div class="glitch-text" data-text="SYSTEM_INIT">SYSTEM_INIT</div>
+            <div class="loading-bar">
+                <div class="loading-fill"></div>
+            </div>
+            <div class="loading-status">LOADING DOM LAYERS_ <span class="cursor-blink">|</span></div>
         </div>
     </div>
 
@@ -411,17 +414,18 @@
                     </div>
                 </div>
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" onsubmit="event.preventDefault();">
+                    <form id="contactForm" class="contact-form" method="POST" action="{% url 'home' %}">
+                        {% csrf_token %}
                         <div class="input-group">
-                            <input type="text" id="name" required placeholder=" ">
+                            <input type="text" id="name" name="name" required placeholder=" ">
                             <label for="name">Identification (Name)</label>
                         </div>
                         <div class="input-group">
-                            <input type="email" id="email" required placeholder=" ">
+                            <input type="email" id="email" name="email" required placeholder=" ">
                             <label for="email">Uplink (Email)</label>
                         </div>
                         <div class="input-group">
-                            <textarea id="message" rows="4" required placeholder=" "></textarea>
+                            <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
                             <label for="message">Transmission Data</label>
                         </div>
                         <button type="submit" class="btn-neon w-100">Send Transmission <i
@@ -436,9 +440,9 @@
         <p>Architected & Powered by <span class="neon-text">Aakash Savaliya</span> &copy; 2026</p>
     </footer>
 
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}?v=2.0"></script>
     <script>
-        feather.replace()
+        if (window.feather) feather.replace();
     </script>
 </body>
 

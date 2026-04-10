@@ -13,6 +13,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -99,3 +100,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Aakash Admin",
+    "site_header": "Aakash Savaliya",
+    "site_brand": "System Admin",
+    "welcome_sign": "Welcome to the Nexus",
+    "copyright": "Aakash Savaliya",
+    "search_model": ["auth.User"],
+    "show_ui_builder": True,
+}
