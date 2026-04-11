@@ -208,31 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showToast(message, isError=false) {
-        let toast = document.getElementById('toastNotification');
-        if (!toast) {
-            toast = document.createElement('div');
-            toast.id = 'toastNotification';
-            toast.className = 'toast-notification';
-            toast.innerHTML = `<i data-feather="${isError ? 'alert-circle' : 'check-circle'}"></i> <span></span>`;
-            document.body.appendChild(toast);
-            if (window.feather) feather.replace();
-        }
-        
-        toast.querySelector('span').textContent = message;
-        if (isError) {
-             toast.style.borderColor = '#ff2a55';
-             toast.style.boxShadow = '0 0 20px rgba(255, 42, 85, 0.3)';
-             if (toast.querySelector('svg')) toast.querySelector('svg').style.color = '#ff2a55';
-        } else {
-             toast.style.borderColor = 'var(--neon-blue)';
-             toast.style.boxShadow = '0 0 20px var(--neon-glow-blue)';
-             if (toast.querySelector('svg')) toast.querySelector('svg').style.color = 'var(--neon-blue)';
-        }
-
-        setTimeout(() => toast.classList.add('show'), 10);
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 4000);
+        alert(message);
     }
 });

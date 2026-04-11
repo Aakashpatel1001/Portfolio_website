@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aakash Savaliya | Portfolio</title>
     <meta name="description" content="Futuristic Portfolio of Aakash Savaliya - Developer & Data Enthusiast">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=5.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=8.0">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -48,8 +49,7 @@
                             data-feather="linkedin"></i></a>
                     <a href="https://github.com/Aakashpatel1001" target="_blank" aria-label="GitHub"><i
                             data-feather="github"></i></a>
-                    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
-                            data-feather="instagram"></i></a>
+                    <a href="mailto:patelaakash098765@gmail.com" aria-label="Email"><i data-feather="mail"></i></a>
                 </div>
                 <button id="theme-toggle" aria-label="Toggle Theme">
                     <i data-feather="moon" class="moon-icon"></i>
@@ -436,11 +436,53 @@
         </section>
     </main>
 
-    <footer>
-        <p>Architected & Powered by <span class="neon-text">Aakash Savaliya</span> &copy; 2026</p>
+    <footer class="cyber-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="{% url 'home' %}" class="logo"
+                    style="margin-bottom: 20px; display: inline-block;">Aakash<span>.</span></a>
+                <p>Building high-performance digital experiences with complex logic and striking aesthetics.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/Aakashpatel1001" target="_blank" aria-label="GitHub"><i
+                            data-feather="github"></i></a>
+                    <a href="https://www.linkedin.com/in/aakash-patel674" target="_blank" aria-label="LinkedIn"><i
+                            data-feather="linkedin"></i></a>
+                    <a href="mailto:patelaakash098765@gmail.com" aria-label="Email"><i data-feather="mail"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>System Links</h4>
+                <ul>
+                    <li><a href="#about"><i data-feather="chevron-right"></i> Story</a></li>
+                    <li><a href="#skills"><i data-feather="chevron-right"></i> Capabilities</a></li>
+                    <li><a href="#projects"><i data-feather="chevron-right"></i> Prototypes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Operator Status</h4>
+                <div class="status-indicator">
+                    <span class="pulse-dot"></span> Open to Collaboration
+                </div>
+                <p class="footer-location"><i data-feather="map-pin"></i> Ahmedabad, Gujarat, India</p>
+                <div
+                    style="margin-top:20px; font-size: 0.85rem; color: var(--text-muted); display:flex; align-items:center; gap:8px;">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Architected & Powered by <span class="neon-text">Aakash Savaliya</span> &copy; 2026</p>
+            <div class="footer-tech-stack">
+                <span style="color: var(--neon-blue);">Django</span> | <span
+                    style="color: var(--neon-purple);">Python</span> | <span style="color: #f59e0b;">JS</span>
+            </div>
+        </div>
     </footer>
 
-    <script src="{% static 'js/script.js' %}?v=2.0"></script>
+    <script src="{% static 'js/script.js' %}?v=4.0"></script>
     <script>
         if (window.feather) feather.replace();
     </script>

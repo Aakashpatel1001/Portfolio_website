@@ -1425,13 +1425,182 @@ body.light-theme .moon-icon {
     justify-content: center;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 30px;
+/* Modern Cyber Footer */
+.cyber-footer {
     border-top: 1px solid var(--border-glass);
-    margin-top: 50px;
-    font-size: 0.9rem;
+    background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-base) 100%);
+    padding: 60px 5% 20px 5%;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), transparent);
+    opacity: 0.5;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px dashed var(--border-glass);
+}
+
+.footer-brand p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 350px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.footer-socials a:hover {
+    color: var(--neon-blue);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-glow-blue);
+    transform: translateY(-3px);
+}
+
+.footer-links h4, .footer-contact h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.footer-links a svg {
+    width: 16px;
+    height: 16px;
+    color: var(--neon-blue);
+    transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--neon-blue);
+}
+
+.footer-links a:hover svg {
+    transform: translateX(4px);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    padding: 10px 15px;
+    border-radius: 6px;
+    color: #10b981;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    width: fit-content;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.footer-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer-location svg {
+    width: 16px;
+    height: 16px;
+    color: var(--neon-purple);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 25px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.footer-tech-stack {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
 }
 
 /* Scroll Reveal Animations */
@@ -1510,35 +1679,4 @@ footer {
         display: none;
     }
 }
-
-/* Toast Notification */
-.toast-notification {
-    position: fixed;
-    top: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bg-surface);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--neon-blue);
-    color: var(--text-primary);
-    padding: 16px 32px;
-    border-radius: 50px;
-    box-shadow: 0 10px 40px var(--neon-glow-blue);
-    font-family: var(--font-body);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    z-index: 10000;
-    transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.toast-notification.show {
-    top: 40px;
-}
-
-.toast-notification i, .toast-notification svg {
-    color: var(--neon-blue);
-}
+

@@ -13,7 +13,7 @@ def home(request):
             Contact.objects.create(name=name, email=email, message=message)
             
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-                return JsonResponse({'success': True, 'message': 'Transmission successful. Data stored in database.'})
+                return JsonResponse({'success': True, 'message': 'Message sent successfully! I will get back to you soon.'})
                 
             messages.success(request, 'Your transmission has been received.')
             return redirect('/#contact')
