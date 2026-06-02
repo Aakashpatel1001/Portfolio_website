@@ -49,6 +49,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('light-theme');
     });
 
+    // --- 4.5 Mobile Menu Toggle ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-btn');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinksItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    }
+
     // --- 5. Navbar & Scroll Reveal ---
     const navbar = document.querySelector('.navbar');
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -180,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 8. Contact Form AJAX & Toast ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
             const formData = new FormData(this);
@@ -192,22 +212,41 @@ document.addEventListener('DOMContentLoaded', () => {
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    showToast(data.message);
-                    this.reset();
-                } else {
-                    showToast(data.message || 'Error: Could not send transmission.', true);
-                }
-            })
-            .catch(error => {
-                showToast('Error: Network failure.', true);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.message);
+                        this.reset();
+                    } else {
+                        showToast(data.message || 'Error: Could not send transmission.', true);
+                    }
+                })
+                .catch(error => {
+                    showToast('Error: Network failure.', true);
+                });
         });
     }
 
-    function showToast(message, isError=false) {
+    function showToast(message, isError = false) {
         alert(message);
+    }
+
+    // --- 9. Scroll to Top Button ---
+    const scrollTopBtn = document.getElementById('scrollToTop');
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
 });

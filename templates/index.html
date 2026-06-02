@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=8.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=8.1">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -144,21 +144,22 @@
                         <div class="about-tech-story">
                             <h3 class="cyber-heading">System Operator Profile</h3>
 
-                            <p class="tech-lead"><i data-feather="chevron-right"></i> Current Status: BCA Student @
-                                Gujarat University</p>
+                            <p class="tech-lead"><i data-feather="chevron-right"></i> Current Status: {{ profile.name|default:"Aakash Savaliya" }}</p>
 
                             <p class="story-text">
-                                Hello! I'm Aakash Savaliya, a passionate BCA student currently studying at Gujarat
-                                University. I have a deep interest in programming and love exploring new technologies.
-                                My main focus is on web development, software design, and problem-solving through code.
+                                {% if profile.bio %}
+                                    {{ profile.bio|linebreaksbr }}
+                                {% else %}
+                                    Hello! I'm Aakash Savaliya, a passionate BCA student currently studying at Gujarat
+                                    University. I have a deep interest in programming and love exploring new technologies.
+                                    My main focus is on web development, software design, and problem-solving through code.
+                                    <br><br>
+                                    I enjoy taking on new challenges that push me to learn and grow. You can often find me
+                                    participating in coding contests, taking online courses, and collaborating on tech
+                                    projects. My ultimate goal is to build a great career in software development where I
+                                    can create useful solutions and connect with industry experts!
+                                {% endif %}
                             </p>
-                            <p class="story-text">
-                                I enjoy taking on new challenges that push me to learn and grow. You can often find me
-                                participating in coding contests, taking online courses, and collaborating on tech
-                                projects. My ultimate goal is to build a great career in software development where I
-                                can create useful solutions and connect with industry experts!
-                            </p>
-
                             <div class="tech-stats-grid">
                                 <div class="tech-stat-box box-blue">
                                     <span class="stat-number">BCA</span>
@@ -187,26 +188,23 @@
             <div class="skills-split-container">
                 <!-- Left: Categories -->
                 <div class="skills-categories-grid">
+                    {% regroup skills by category as category_list %}
+                    {% for category in category_list %}
                     <div class="glass-card compact-skill-card">
-                        <i data-feather="server" class="compact-icon"></i>
-                        <h4>Backend Architecture</h4>
-                        <p>Python / ASP.NET / Django /JAVA</p>
+                        <i data-feather="terminal" class="compact-icon"></i>
+                        <h4>{{ category.grouper }} Architecture</h4>
+                        <p>
+                            {% for skill in category.list %}
+                                {{ skill.name }}{% if not forloop.last %} / {% endif %}
+                            {% endfor %}
+                        </p>
                     </div>
+                    {% empty %}
                     <div class="glass-card compact-skill-card">
-                        <i data-feather="layout" class="compact-icon"></i>
-                        <h4>Web Frontend</h4>
-                        <p>HTML / CSS / JS</p>
+                        <h4>Awaiting Data</h4>
+                        <p>No skills have been added to the database yet.</p>
                     </div>
-                    <div class="glass-card compact-skill-card">
-                        <i data-feather="database" class="compact-icon"></i>
-                        <h4>Database Systems</h4>
-                        <p>SQL / SQLITE / MYSQL</p>
-                    </div>
-                    <div class="glass-card compact-skill-card">
-                        <i data-feather="cpu" class="compact-icon"></i>
-                        <h4>Data & AI Logic</h4>
-                        <p>Pandas / Numpy / Git</p>
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <!-- Right: Progress Stack -->
@@ -215,41 +213,21 @@
                         <i data-feather="terminal"></i> <span>DEV_TERMINAL.exe</span>
                     </div>
 
+                    {% for skill in skills|slice:":5" %}
                     <div class="stack-item">
-                        <div class="stack-meta"><span>PYTHON & DJANGO</span><span class="stack-pct">70%</span></div>
-                        <div class="stack-bar">
-                            <div class="stack-fill" style="width: 70%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="stack-item">
-                        <div class="stack-meta"><span>ASP.NET / C#</span><span class="stack-pct">65%</span></div>
-                        <div class="stack-bar">
-                            <div class="stack-fill" style="width: 65%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="stack-item">
-                        <div class="stack-meta"><span>FRONTEND (HTML/JS/CSS)</span><span class="stack-pct">80%</span>
-                        </div>
+                        <div class="stack-meta"><span style="text-transform: uppercase;">{{ skill.name }}</span><span class="stack-pct">80%</span></div>
                         <div class="stack-bar">
                             <div class="stack-fill" style="width: 80%;"></div>
                         </div>
                     </div>
-
+                    {% empty %}
                     <div class="stack-item">
-                        <div class="stack-meta"><span>SQL & DATABASES</span><span class="stack-pct">80%</span></div>
+                        <div class="stack-meta"><span>AWAITING INPUT</span><span class="stack-pct">0%</span></div>
                         <div class="stack-bar">
-                            <div class="stack-fill" style="width: 80%;"></div>
+                            <div class="stack-fill" style="width: 0%;"></div>
                         </div>
                     </div>
-
-                    <div class="stack-item">
-                        <div class="stack-meta"><span>JAVA</span><span class="stack-pct">65%</span></div>
-                        <div class="stack-bar">
-                            <div class="stack-fill" style="width: 65%;"></div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -328,72 +306,40 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1 -->
+                {% for project in projects %}
                 <div class="project-card-container web reveal-on-scroll">
                     <div class="glass-card project-card">
                         <div class="project-img-wrapper">
-                            <img src="{% static 'images/project1.png' %}" alt="Project 1">
+                            {% if project.image %}
+                                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                            {% else %}
+                                <div class="placeholder-gradient"></div>
+                            {% endif %}
                             <div class="project-overlay">
-                                <a href="#" class="btn-glass"><i data-feather="external-link"></i> Live Demo</a>
-                                <a href="#" class="btn-glass"><i data-feather="github"></i> Source</a>
+                                {% if project.live_demo %}
+                                <a href="{{ project.live_demo }}" class="btn-glass" target="_blank"><i data-feather="external-link"></i> Live Demo</a>
+                                {% endif %}
+                                {% if project.github_link %}
+                                <a href="{{ project.github_link }}" class="btn-glass" target="_blank"><i data-feather="github"></i> Source</a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>Nexus Commerce Platform</h3>
-                            <p>A full-stack asynchronous shopping aesthetic platform built on Django Channels and
-                                WebSockets.</p>
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.description|linebreaksbr }}</p>
                             <div class="tech-stack">
-                                <span>Django</span>
-                                <span>PostgreSQL</span>
-                                <span>Redis</span>
+                                {% for tech in project.get_tech_list %}
+                                <span>{{ tech }}</span>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="project-card-container data reveal-on-scroll">
-                    <div class="glass-card project-card">
-                        <div class="project-img-wrapper">
-                            <img src="{% static 'images/project2.png' %}" alt="Project 2">
-                            <div class="project-overlay">
-                                <a href="#" class="btn-glass"><i data-feather="external-link"></i> Live Demo</a>
-                                <a href="#" class="btn-glass"><i data-feather="github"></i> Source</a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Quantum Analytics Dashboard</h3>
-                            <p>Real-time data visualization interface rendering massive telemetry logs with predictive
-                                neon charting.</p>
-                            <div class="tech-stack">
-                                <span>React</span>
-                                <span>Python</span>
-                                <span>Pandas</span>
-                            </div>
-                        </div>
-                    </div>
+                {% empty %}
+                <div class="text-center w-full" style="grid-column: 1 / -1; padding: 2rem;">
+                    <p style="color: var(--text-muted); font-size: 1.1rem;">No projects deployed yet.</p>
                 </div>
-
-                <!-- Extra Project -->
-                <div class="project-card-container web reveal-on-scroll">
-                    <div class="glass-card project-card">
-                        <div class="project-img-wrapper">
-                            <div class="placeholder-gradient"></div>
-                            <div class="project-overlay">
-                                <a href="#" class="btn-glass"><i data-feather="github"></i> Source</a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Synergy AI API</h3>
-                            <p>RESTful interface wrapping over local language models for efficient response generation
-                                pipelines.</p>
-                            <div class="tech-stack">
-                                <span>FastAPI</span>
-                                <span>Docker</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
 
@@ -482,7 +428,14 @@
         </div>
     </footer>
 
-    <script src="{% static 'js/script.js' %}?v=4.0"></script>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top-wrapper">
+        <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+            <i data-feather="arrow-up"></i>
+        </button>
+    </div>
+
+    <script src="{% static 'js/script.js' %}?v=4.3"></script>
     <script>
         if (window.feather) feather.replace();
     </script>

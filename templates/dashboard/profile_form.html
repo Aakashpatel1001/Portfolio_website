@@ -1,0 +1,45 @@
+{% extends 'dashboard/base.html' %}
+
+{% block header %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-3xl">
+    <div class="mb-6 pb-4 border-b border-gray-100">
+        <h3 class="text-lg font-semibold text-gray-800">Personal Information</h3>
+        <p class="text-sm text-gray-500">Update your portfolio bio and resume here.</p>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-1 gap-6">
+            {% for field in form %}
+            <div>
+                <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                <p class="mt-1 text-xs text-gray-500">{{ field.help_text }}</p>
+                {% endif %}
+                <style>
+                    #{{ field.id_for_label }} {
+                        width: 100%;
+                        padding: 0.5rem 0.75rem;
+                        border-radius: 0.375rem;
+                        border: 1px solid #d1d5db;
+                        background-color: #f9fafb;
+                    }
+                    #{{ field.id_for_label }}:focus {
+                        outline: none;
+                        border-color: #6366f1;
+                    }
+                </style>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pt-4 flex justify-end">
+            <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded shadow hover:bg-indigo-700 transition">Update Profile</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
