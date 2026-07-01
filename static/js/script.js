@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1500); // Artificial delay to show the nice loader
 
     // --- 3. Typing Effect ---
-    const words = ["Python Developer", "Web Developer", "Backend Engineer", "Asp.net Developer"];
+    const words = ["Python Developer", "Django Developer", "Full Stack Developer"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -43,30 +43,137 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setTimeout(typeEffect, 2000); // Start typing after loader
 
-    // --- 4. Dark/Light Theme Toggle ---
-    const themeBtn = document.getElementById('theme-toggle');
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-theme');
-    });
 
-    // --- 4.5 Mobile Menu Toggle ---
+
+    // --- 4.5 Mobile Overlay Menu ---
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-btn');
+    const overlay = document.getElementById('mobileNavOverlay');
+    const overlayNavItems = document.querySelectorAll('.overlay-nav-item');
+    const overlayCloseBtn = document.getElementById('overlayCloseBtn');
 
-    if (hamburger && navLinks) {
+    function openOverlay() {
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        initMenuParticles();
+        // Re-render feather icons inside overlay
+        if (window.feather) feather.replace();
+    }
+
+    function closeOverlay() {
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        stopMenuParticles();
+    }
+
+    if (hamburger && overlay) {
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            if (overlay.classList.contains('active')) {
+                closeOverlay();
+            } else {
+                openOverlay();
+            }
         });
 
-        // Close menu when clicking a link
-        navLinksItems.forEach(item => {
+        // Close button inside overlay
+        if (overlayCloseBtn) {
+            overlayCloseBtn.addEventListener('click', closeOverlay);
+        }
+
+        // Close on nav item click
+        overlayNavItems.forEach(item => {
             item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+                closeOverlay();
             });
         });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                closeOverlay();
+            }
+        });
+    }
+
+
+
+    // --- Menu Particle Canvas ---
+    let menuParticleAnimId = null;
+    let menuParticles = [];
+
+    function initMenuParticles() {
+        const menuCanvas = document.getElementById('menu-particles-canvas');
+        if (!menuCanvas) return;
+        const mCtx = menuCanvas.getContext('2d');
+        menuCanvas.width = window.innerWidth;
+        menuCanvas.height = window.innerHeight;
+        menuParticles = [];
+
+        for (let i = 0; i < 30; i++) {
+            menuParticles.push({
+                x: Math.random() * menuCanvas.width,
+                y: Math.random() * menuCanvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                radius: Math.random() * 1.5 + 0.5,
+                alpha: Math.random() * 0.3 + 0.1
+            });
+        }
+
+        function animateMenuParticles() {
+            mCtx.clearRect(0, 0, menuCanvas.width, menuCanvas.height);
+            const isLight = document.body.classList.contains('light-theme');
+
+            menuParticles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > menuCanvas.width) p.vx = -p.vx;
+                if (p.y < 0 || p.y > menuCanvas.height) p.vy = -p.vy;
+
+                mCtx.beginPath();
+                mCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                mCtx.fillStyle = isLight
+                    ? `rgba(2, 132, 199, ${p.alpha})`
+                    : `rgba(0, 229, 255, ${p.alpha})`;
+                mCtx.fill();
+            });
+
+            // Draw subtle connections
+            for (let i = 0; i < menuParticles.length; i++) {
+                for (let j = i + 1; j < menuParticles.length; j++) {
+                    const dx = menuParticles[i].x - menuParticles[j].x;
+                    const dy = menuParticles[i].y - menuParticles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        const lineAlpha = Math.max(0, 0.08 - dist / 2000);
+                        mCtx.beginPath();
+                        mCtx.strokeStyle = isLight
+                            ? `rgba(126, 34, 206, ${lineAlpha})`
+                            : `rgba(0, 229, 255, ${lineAlpha})`;
+                        mCtx.lineWidth = 0.5;
+                        mCtx.moveTo(menuParticles[i].x, menuParticles[i].y);
+                        mCtx.lineTo(menuParticles[j].x, menuParticles[j].y);
+                        mCtx.stroke();
+                    }
+                }
+            }
+
+            menuParticleAnimId = requestAnimationFrame(animateMenuParticles);
+        }
+
+        animateMenuParticles();
+    }
+
+    function stopMenuParticles() {
+        if (menuParticleAnimId) {
+            cancelAnimationFrame(menuParticleAnimId);
+            menuParticleAnimId = null;
+        }
     }
 
     // --- 5. Navbar & Scroll Reveal ---

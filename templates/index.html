@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=8.1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=10.6">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -51,16 +51,75 @@
                             data-feather="github"></i></a>
                     <a href="mailto:patelaakash098765@gmail.com" aria-label="Email"><i data-feather="mail"></i></a>
                 </div>
-                <button id="theme-toggle" aria-label="Toggle Theme">
+                <button id="theme-toggle"
+                    onclick="document.body.classList.toggle('light-theme'); if(window.feather)feather.replace();"
+                    aria-label="Toggle Theme">
                     <i data-feather="moon" class="moon-icon"></i>
                     <i data-feather="sun" class="sun-icon"></i>
                 </button>
-                <div class="hamburger">
-                    <i data-feather="menu"></i>
-                </div>
+                <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <canvas id="menu-particles-canvas"></canvas>
+        <div class="overlay-content">
+            <!-- Header -->
+            <div class="overlay-header">
+                <a href="{% url 'home' %}" class="logo">Aakash<span>.</span></a>
+                <button class="overlay-close-btn" id="overlayCloseBtn" aria-label="Close Menu">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="overlay-nav" aria-label="Mobile Navigation">
+                <a href="#about" class="overlay-nav-item">
+                    <span class="nav-item-label">Story</span>
+                    <span class="nav-item-desc">Learn about me</span>
+                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                </a>
+                <a href="#skills" class="overlay-nav-item">
+                    <span class="nav-item-label">Skills</span>
+                    <span class="nav-item-desc">What I work with</span>
+                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                </a>
+                <a href="#projects" class="overlay-nav-item">
+                    <span class="nav-item-label">Projects</span>
+                    <span class="nav-item-desc">Things I've built</span>
+                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                </a>
+                <a href="#contact" class="overlay-nav-item">
+                    <span class="nav-item-label">Contact</span>
+                    <span class="nav-item-desc">Get in touch</span>
+                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                </a>
+            </nav>
+
+            <!-- Footer -->
+            <div class="overlay-bottom">
+                <div class="overlay-socials">
+                    <a href="https://github.com/Aakashpatel1001" target="_blank" aria-label="GitHub"><i
+                            data-feather="github"></i></a>
+                    <a href="https://www.linkedin.com/in/aakash-patel674" target="_blank" aria-label="LinkedIn"><i
+                            data-feather="linkedin"></i></a>
+                    <a href="mailto:patelaakash098765@gmail.com" aria-label="Email"><i data-feather="mail"></i></a>
+                </div>
+                <button id="overlay-theme-toggle" class="overlay-theme-btn"
+                    onclick="document.body.classList.toggle('light-theme'); if(window.feather)feather.replace();"
+                    aria-label="Toggle Theme">
+                    <i data-feather="moon" class="moon-icon"></i>
+                    <i data-feather="sun" class="sun-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Hero Section -->
@@ -68,9 +127,8 @@
             <canvas id="particles-canvas"></canvas>
             <div class="hero-content">
                 <div class="hero-text-container">
-                    <div class="system-badge">
-                        <span class="dot"></span> SYSTEM_ONLINE
-                    </div>
+                    <p class="hero-greeting">// Hello World — I'm</p>
+                    <div class="hero-accent-line"></div>
                     <h1 class="hero-title">
                         <span class="first-name">AAKASH</span><br>
                         <span class="last-name">SAVALIYA.</span>
@@ -79,8 +137,8 @@
                         > <span id="typing-text" class="neon-text-custom"></span><span class="cursor-blink">_</span>
                     </h2>
                     <div class="hero-cta">
-                        <a href="#projects" class="btn-solid">INITIALIZE_PROJECTS</a>
-                        <a href="#contact" class="btn-outline">EXECUTE_CONTACT()</a>
+                        <a href="#projects" class="btn-solid">Initialize Projects</a>
+                        <a href="#contact" class="btn-outline">Contact Me</a>
                     </div>
                 </div>
 
@@ -148,16 +206,16 @@
 
                             <p class="story-text">
                                 {% if profile.bio %}
-                                    {{ profile.bio|linebreaksbr }}
+                                {{ profile.bio|linebreaksbr }}
                                 {% else %}
-                                    Hello! I'm Aakash Savaliya, a passionate BCA student currently studying at Gujarat
-                                    University. I have a deep interest in programming and love exploring new technologies.
-                                    My main focus is on web development, software design, and problem-solving through code.
-                                    <br><br>
-                                    I enjoy taking on new challenges that push me to learn and grow. You can often find me
-                                    participating in coding contests, taking online courses, and collaborating on tech
-                                    projects. My ultimate goal is to build a great career in software development where I
-                                    can create useful solutions and connect with industry experts!
+                                Hello! I'm Aakash Savaliya, a passionate BCA student currently studying at Gujarat
+                                University. I have a deep interest in programming and love exploring new technologies.
+                                My main focus is on web development, software design, and problem-solving through code.
+                                <br><br>
+                                I enjoy taking on new challenges that push me to learn and grow. You can often find me
+                                participating in coding contests, taking online courses, and collaborating on tech
+                                projects. My ultimate goal is to build a great career in software development where I
+                                can create useful solutions and connect with industry experts!
                                 {% endif %}
                             </p>
                             <div class="tech-stats-grid">
@@ -202,7 +260,7 @@
                         <h4>{{ category.grouper }} Architecture</h4>
                         <p>
                             {% for skill in category.list %}
-                                {{ skill.name }}{% if not forloop.last %} / {% endif %}
+                            {{ skill.name }}{% if not forloop.last %} / {% endif %}
                             {% endfor %}
                         </p>
                     </div>
@@ -222,7 +280,8 @@
 
                     {% for skill in skills|slice:":5" %}
                     <div class="stack-item">
-                        <div class="stack-meta"><span style="text-transform: uppercase;">{{ skill.name }}</span><span class="stack-pct">80%</span></div>
+                        <div class="stack-meta"><span style="text-transform: uppercase;">{{ skill.name }}</span><span
+                                class="stack-pct">80%</span></div>
                         <div class="stack-bar">
                             <div class="stack-fill" style="width: 80%;"></div>
                         </div>
@@ -318,16 +377,18 @@
                     <div class="glass-card project-card">
                         <div class="project-img-wrapper">
                             {% if project.image %}
-                                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}">
                             {% else %}
-                                <div class="placeholder-gradient"></div>
+                            <div class="placeholder-gradient"></div>
                             {% endif %}
                             <div class="project-overlay">
                                 {% if project.live_demo %}
-                                <a href="{{ project.live_demo }}" class="btn-glass" target="_blank"><i data-feather="external-link"></i> Live Demo</a>
+                                <a href="{{ project.live_demo }}" class="btn-glass" target="_blank"><i
+                                        data-feather="external-link"></i> Live Demo</a>
                                 {% endif %}
                                 {% if project.github_link %}
-                                <a href="{{ project.github_link }}" class="btn-glass" target="_blank"><i data-feather="github"></i> Source</a>
+                                <a href="{{ project.github_link }}" class="btn-glass" target="_blank"><i
+                                        data-feather="github"></i> Source</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -439,7 +500,7 @@
         </button>
     </div>
 
-    <script src="{% static 'js/script.js' %}?v=4.3"></script>
+    <script src="{% static 'js/script.js' %}?v=5.4"></script>
     <script>
         if (window.feather) feather.replace();
     </script>
