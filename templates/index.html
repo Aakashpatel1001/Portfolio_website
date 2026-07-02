@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=10.6">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=11.0">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -69,6 +69,7 @@
     <!-- Mobile Menu Overlay -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
         <canvas id="menu-particles-canvas"></canvas>
+        <div class="overlay-cyber-grid"></div>
         <div class="overlay-content">
             <!-- Header -->
             <div class="overlay-header">
@@ -81,24 +82,40 @@
             <!-- Navigation -->
             <nav class="overlay-nav" aria-label="Mobile Navigation">
                 <a href="#about" class="overlay-nav-item">
-                    <span class="nav-item-label">Story</span>
-                    <span class="nav-item-desc">Learn about me</span>
-                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                    <span class="nav-item-number">01</span>
+                    <span class="nav-item-icon-badge"><i data-feather="user"></i></span>
+                    <div class="nav-item-text">
+                        <span class="nav-item-label">Story</span>
+                        <span class="nav-item-desc">About Entity</span>
+                    </div>
+                    <i data-feather="chevron-right" class="nav-item-arrow"></i>
                 </a>
                 <a href="#skills" class="overlay-nav-item">
-                    <span class="nav-item-label">Skills</span>
-                    <span class="nav-item-desc">What I work with</span>
-                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                    <span class="nav-item-number">02</span>
+                    <span class="nav-item-icon-badge"><i data-feather="zap"></i></span>
+                    <div class="nav-item-text">
+                        <span class="nav-item-label">Skills</span>
+                        <span class="nav-item-desc">Core Capabilities</span>
+                    </div>
+                    <i data-feather="chevron-right" class="nav-item-arrow"></i>
                 </a>
                 <a href="#projects" class="overlay-nav-item">
-                    <span class="nav-item-label">Projects</span>
-                    <span class="nav-item-desc">Things I've built</span>
-                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                    <span class="nav-item-number">03</span>
+                    <span class="nav-item-icon-badge"><i data-feather="folder"></i></span>
+                    <div class="nav-item-text">
+                        <span class="nav-item-label">Projects</span>
+                        <span class="nav-item-desc">Prototypes & Deployments</span>
+                    </div>
+                    <i data-feather="chevron-right" class="nav-item-arrow"></i>
                 </a>
                 <a href="#contact" class="overlay-nav-item">
-                    <span class="nav-item-label">Contact</span>
-                    <span class="nav-item-desc">Get in touch</span>
-                    <i data-feather="arrow-right" class="nav-item-arrow"></i>
+                    <span class="nav-item-number">04</span>
+                    <span class="nav-item-icon-badge"><i data-feather="send"></i></span>
+                    <div class="nav-item-text">
+                        <span class="nav-item-label">Contact</span>
+                        <span class="nav-item-desc">Initiate Transmission</span>
+                    </div>
+                    <i data-feather="chevron-right" class="nav-item-arrow"></i>
                 </a>
             </nav>
 
@@ -125,6 +142,14 @@
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <canvas id="particles-canvas"></canvas>
+            <!-- Floating Tech Icons -->
+            <div class="hero-floating-icons">
+                <span class="floating-icon fi-1" title="Python">🐍</span>
+                <span class="floating-icon fi-2" title="Django">🎯</span>
+                <span class="floating-icon fi-3" title="JavaScript">⚡</span>
+                <span class="floating-icon fi-4" title="Database">🗄️</span>
+                <span class="floating-icon fi-5" title="Git">🔀</span>
+            </div>
             <div class="hero-content">
                 <div class="hero-text-container">
                     <p class="hero-greeting">// Hello World — I'm</p>
@@ -140,6 +165,12 @@
                         <a href="#projects" class="btn-solid">Initialize Projects</a>
                         <a href="#contact" class="btn-outline">Contact Me</a>
                     </div>
+                    <!-- Quick Stat Chips -->
+                    <div class="hero-stat-chips">
+                        <span class="stat-chip"><i data-feather="folder" class="chip-icon"></i> 3+ Projects</span>
+                        <span class="stat-chip"><i data-feather="book-open" class="chip-icon"></i> BCA Student</span>
+                        <span class="stat-chip"><i data-feather="map-pin" class="chip-icon"></i> Gujarat, India</span>
+                    </div>
                 </div>
 
                 <div class="hero-terminal-container">
@@ -148,17 +179,10 @@
                             <span class="traffic-dot red"></span>
                             <span class="traffic-dot yellow"></span>
                             <span class="traffic-dot green"></span>
+                            <span class="terminal-title">aakash@dev: ~/portfolio</span>
                         </div>
                         <div class="terminal-body" id="hero-terminal-body">
-                            <p><span class="log-gray">$ Fetching data from API...</span></p>
-                            <p><span class="log-gray">$ Parsing system parameters...</span></p>
-                            <p><span class="log-yellow">$ python manage.py runserver</span></p>
-                            <p><span class="log-green">$ System online at port 8000</span></p>
-                            <p><span class="log-green">$ WebSockets connected via Redis</span></p>
-                            <p><span class="log-red">$ Error: 404 not found (handled)</span></p>
-                            <p><span class="log-yellow">$ Deploying to production...</span></p>
-                            <p><span class="log-prompt">➜</span> <span class="log-path">~</span> <span
-                                    class="cursor-block"></span></p>
+                            <!-- Dynamic terminal content injected by JS -->
                         </div>
                     </div>
                 </div>
@@ -185,10 +209,9 @@
                                 <span><i data-feather="cpu"></i> SYSTEM_ADMIN</span>
                                 <span class="badge-status">ACTIVE</span>
                             </div>
-                            <div class="badge-image-container glow-border">
+                            <div class="badge-image-container glow-border pulse-glow">
                                 <img src="{% static 'images/profile.jpeg' %}" alt="Aakash Profile"
                                     onerror="this.src='/static/images/fallback-profile.png';">
-                                <div class="scanner-line"></div>
                             </div>
                             <div class="badge-footer">
                                 <div class="id-code">ID: // <a href="https://www.linkedin.com/in/aakash-patel674"
@@ -208,20 +231,13 @@
                                 {% if profile.bio %}
                                 {{ profile.bio|linebreaksbr }}
                                 {% else %}
-                                Hello! I'm Aakash Savaliya, a passionate BCA student currently studying at Gujarat
-                                University. I have a deep interest in programming and love exploring new technologies.
-                                My main focus is on web development, software design, and problem-solving through code.
-                                <br><br>
-                                I enjoy taking on new challenges that push me to learn and grow. You can often find me
-                                participating in coding contests, taking online courses, and collaborating on tech
-                                projects. My ultimate goal is to build a great career in software development where I
-                                can create useful solutions and connect with industry experts!
+                                Bio not configured yet. Add your bio via the admin panel.
                                 {% endif %}
                             </p>
                             <div class="tech-stats-grid">
                                 <div class="tech-stat-box box-blue">
                                     <span class="stat-number">BCA</span>
-                                    <span class="stat-meta">Degree In Progress</span>
+                                    <span class="stat-meta"></span>
                                 </div>
                                 <div class="tech-stat-box box-purple">
                                     <span class="stat-number">3+</span>
@@ -276,14 +292,20 @@
                 <div class="skills-progress-stack glass-card">
                     <div class="stack-header">
                         <i data-feather="terminal"></i> <span>DEV_TERMINAL.exe</span>
+                        <span class="stack-header-status">● RUNNING</span>
+                    </div>
+                    <div class="stack-terminal-line" id="skillTerminalLine">
+                        <span class="log-prompt">➜</span> <span class="log-path">~</span> scanning skill modules...<span class="cursor-blink">_</span>
                     </div>
 
                     {% for skill in skills|slice:":5" %}
-                    <div class="stack-item">
-                        <div class="stack-meta"><span style="text-transform: uppercase;">{{ skill.name }}</span><span
-                                class="stack-pct">80%</span></div>
+                    <div class="stack-item" data-proficiency="{{ skill.proficiency }}">
+                        <div class="stack-meta">
+                            <span style="text-transform: uppercase;">{{ skill.name }}</span>
+                            <span class="stack-pct">{{ skill.proficiency }}%</span>
+                        </div>
                         <div class="stack-bar">
-                            <div class="stack-fill" style="width: 80%;"></div>
+                            <div class="stack-fill" style="width: 0%;" data-target="{{ skill.proficiency }}"></div>
                         </div>
                     </div>
                     {% empty %}
@@ -294,6 +316,9 @@
                         </div>
                     </div>
                     {% endfor %}
+                    <div class="stack-footer-line">
+                        <span class="log-gray">// {{ skills|length }} modules loaded</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -376,6 +401,8 @@
                 <div class="project-card-container web reveal-on-scroll">
                     <div class="glass-card project-card">
                         <div class="project-img-wrapper">
+                            <span class="project-index">PROJECT_{{ forloop.counter|stringformat:"02d" }}</span>
+                            <span class="project-status-badge">DEPLOYED</span>
                             {% if project.image %}
                             <img src="{{ project.image.url }}" alt="{{ project.title }}">
                             {% else %}
@@ -500,7 +527,7 @@
         </button>
     </div>
 
-    <script src="{% static 'js/script.js' %}?v=5.4"></script>
+    <script src="{% static 'js/script.js' %}?v=6.0"></script>
     <script>
         if (window.feather) feather.replace();
     </script>
